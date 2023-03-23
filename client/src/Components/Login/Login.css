@@ -1,0 +1,47 @@
+.landing{
+    background-image: url("../../Images/bg-svg-f.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    margin-top: 0;
+}
+
+.submit-button{
+    background-color: #FF4D00;
+    color: #fff;
+    border: none;
+    text-align: center;
+    margin: 0 auto;
+    width: 150px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    padding: 12px;
+}
+
+.create-link{
+    color: #FF4D00; 
+    border: none;
+    background-color: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+/* 
+.signinLink{
+    color: #FF4D00;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+} */
+
+.about-link{
+    color: #FF4D00;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+/* .hide{
+    display: none;
+} */
