@@ -3,7 +3,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 450px;
+    height: 550px;
     margin-top: 0;
 }
 
@@ -27,13 +27,13 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
 }
-/* 
+
 .signinLink{
     color: #FF4D00;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-} */
+}
 
 .about-link{
     color: #FF4D00;
@@ -45,3 +45,44 @@
 /* .hide{
     display: none;
 } */
+.login-section .all{
+    height: 450px;
+}
+/* Style for the visibility off icon */
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .password-toggle:hover {
+    opacity: 0.8;
+  }
+  
+  .password-toggle:focus {
+    outline: none;
+  }
+  
+  input[type="password"] {
+    padding-right: 44px;
+  }
+  
+  input[type="password"]:focus + .password-toggle {
+    display: block;
+  }
+  .password-toggle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #a6a6a6;
+  }
+  
+  /* .password-toggle:hover svg path,
+  input[type="password"]:focus + .password-toggle svg path {
+    fill: #0d6efd;
+  }
+   */

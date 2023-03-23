@@ -5,9 +5,8 @@ import "./Footer.css"
 function Footer() {
   return (
     <div>
-      {" "}
       {/* Footer section  */}
-      <footer className="container-fluid">
+      <footer className="container-fluid footer">
         <section className="row">
           <div className="first col-md-4">
             <div className="footer-logos">

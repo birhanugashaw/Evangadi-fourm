@@ -4,11 +4,13 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/Usercontext";
 import axios from "axios";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function Signup() {
   const [userData, setUserData] = useContext(UserContext);
   const navigate = useNavigate();
-
+  const [showPassword, setShowPassword] = useState(false);
   // To get form data
   const [form, setForm] = useState({});
   // To track change in form fields 
@@ -43,9 +45,6 @@ function Signup() {
       alert(err.response.data.msg);
     }
   };
-
-
-
   return (
     <div className="landing">
       {/* Login Section  */}
@@ -62,68 +61,64 @@ function Signup() {
 
                     <h6 className="card-title text-center mb-3 fw-light  ">
                       Already have an account?
-                  <Link to={"/login"}>
-                      <span className="create-link">Sign in</span>
+                  <Link className="create-link" to={"/login"}>
+                      <span className="create-link">Sign In</span>
                   </Link>
                     </h6>
 
                   <form onSubmit={handleSubmit}>
-                    <div className="form-floating mb-3">
+                    <div className="mb-3">
                       <input
                         type="email"
                         name="email"
                         className="form-control"
-                        id="floatingInput"
-                        placeholder="name@example.com"
+                        placeholder="Email"
                         onChange={handleChange}
                       />
-                      <label htmlFor="floatingInput">Email address</label>
                     </div>
                     <div className="login-flex">
-                      <div className="form-floating mb-3">
+                      <div className=" mb-3">
                         <input
                           type="text"
                           name="firstName"
                           className="form-control"
-                          id="floatingPassword"
-                          placeholder="Password"
+                          placeholder="First Name"
                           onChange={handleChange}
                         />
-                        <label htmlFor="floatingPassword">First Name</label>
                       </div>
-                      <div className="form-floating mb-3 second">
+                      <div className="mb-3 second">
                         <input
                           type="text"
                           name="lastName"
                           className="form-control"
-                          id="floatingPassword"
-                          placeholder="Password"
+                          placeholder="Last Name"
                           onChange={handleChange}
                         />
-                        <label htmlFor="floatingPassword">Last Name</label>
                       </div>
                     </div>
-                    <div className="form-floating mb-3">
+                    <div className=" mb-3">
                       <input
                         type="text"
                         name="userName"
                         className="form-control"
-                        id="floatingInput"
-                        placeholder="name@example.com"
+                        placeholder="User Name"
                         onChange={handleChange}
                       />
-                      <label htmlFor="floatingInput">User Name</label>
                     </div>
-                    <div className="form-floating mb-3">
-                      <input
-                        type="password"
-                        name="password"
-                        className="form-control"
-                        id="floatingPassword"
-                        placeholder="Password"
-                        onChange={handleChange}
-                      />
-                      <label htmlFor="floatingPassword">Password</label>
+                    <div className="login-flex">
+                    <input
+                          className="form-control mb-3"
+                          type={showPassword ? "text" : "password"} // toggle password visibility based on state
+                          name="password"
+                          onChange={handleChange}
+                          placeholder="Password"
+                        />
+                          <button
+                         type="button"
+                         className="password-toggle mb-3"
+                        onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                      </button>
                     </div>
                     <div className="d-grid">
                       <button
@@ -133,23 +128,22 @@ function Signup() {
                       </button>
                     </div>
                     <br />
-                    <div className="form-check mb-4 text-center">
-                      <label className="forget-password ">
+                    <div className="form-check mb-4 pb-4 text-center">
+                  
                         I agree to the
-                        <a href="https://www.evangadi.com/legal/privacy/">
-                          privacy policy
-                        </a>
+                        <Link to=" https://www.evangadi.com/legal/privacy/">
+                           privacy policy
+                        </Link>
                         and
-                        <a href="https://www.evangadi.com/legal/terms/">
-                          terms of service
-                        </a>
+                        <Link to="https://www.evangadi.com/legal/terms/">
+                           terms of service
+                        </Link>
                         <br />
-                        <span className="create-link my-2">
+                        <span className="create-link my-4">
                           <Link to= '/login'>
                             Already have an account?
                           </Link>
                         </span>
-                      </label>
                     </div>
                   </form>
                 </div>
@@ -169,12 +163,7 @@ function Signup() {
                     starting elementary school or being promoted to CEO of a
                     Fortune 500 company, you have much to offer to those who are
                     trying to follow in your footsteps.
-                  </h6>
-                  <h6 className="login-description mb-5">
-                    Wheather you are willing to share your knowledge or you are
-                    just looking to meet mentors of your own, please start by
-                    joining the network here.
-                  </h6>
+                  </h6>   
                   <div className="d-grid">
                     <button className="how-it-work-button">
                       <a href="https://www.evangadi.com/explained/">

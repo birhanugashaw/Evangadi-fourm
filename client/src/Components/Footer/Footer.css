@@ -1,13 +1,14 @@
-.footer-logos{
-    /* border: 1px solid white; */
-    
-}
-
-.logos{
-    /* border: 1px solid white; */
+.logos {
     width: 230px;
     display: flex;
     justify-content: space-between;
     padding-left: 25%;
-}
-
+  }
+  /* .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+   */
+    
+  

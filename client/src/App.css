@@ -29,9 +29,9 @@ background-color: #fe8402;
   margin-left: 50%;
 }
 
-.login-section .all{
+/* .login-section .all{
 height: 430px;
-}
+} */
 
 .login-button{
 border: none;
@@ -107,10 +107,6 @@ footer a{
 li{
 list-style: none;
 } 
-
-
-
-
 
 
 

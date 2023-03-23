@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import './Header.css'
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/Usercontext';
 
@@ -8,8 +9,8 @@ function Header({ logout }) {
   return (
     <div>
       <section>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary header">
+          <div className="container-fluid ">
             <Link className="navbar-brand mx-5 px-2" to="/login">
               <img
                 src="https://www.evangadi.com/themes/humans//assets/images/misc/evangadi-logo-home.png"

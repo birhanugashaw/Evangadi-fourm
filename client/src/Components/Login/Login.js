@@ -59,14 +59,14 @@ if (userData.user) navigate('/')
                   <h5 className="card-title text-center fw-light fs-5 first-join fw-bold mb-4 mt-5 pt-2">
                     Login to your account
                   </h5>
-                  <h6 className="card-title text-center mb-3 fw-light  ">
+                  <h6 className="text-center mb-3 fw-light  ">
                     Don't have an account?
-                    <Link to={"/signup"}>
-                      <span className="create-link"> Create an account ? </span>
+                    <Link className="create-link" to={"/signup"}>
+                      <span> Create an account ? </span>
                     </Link>
                   </h6>
                   <form onSubmit={handleSubmit}>
-                    <div className="form-floating mb-3">
+                    <div className=" mb-3">
                       <input
                       className="form-control"
                         type="email"
@@ -76,7 +76,7 @@ if (userData.user) navigate('/')
                       />
                     </div>
 
-                    <div className="form-floating mb-3">
+                    <div className=" mb-3">
                       <div className="input-group">
                         <input
                           className="form-control"
@@ -85,12 +85,12 @@ if (userData.user) navigate('/')
                           onChange={handleChange}
                           placeholder="Password"
                         />
-                        <button
-                          type="button"
-                          className="btn "
-                          onClick={() => setShowPassword(!showPassword)}>
-                          {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                        </button>
+                      <button
+                         type="button"
+                         className="password-toggle"
+                        onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                      </button>
                       </div>
                     </div>
                     <div className="d-grid">
@@ -100,12 +100,10 @@ if (userData.user) navigate('/')
                       >
                         Submit
                       </button>
-                      <div className="form-check mb-3 text-center">
-                        <label className="forget-password mt-3">
-                          <span className="create-link">
-                            <Link to={"/signup"}>Create an account ?</Link>
+                      <div className="form-check mb-3 mt-3 text-center">
+                          <span>
+                            <Link className="create-link" to={"/signup"}>Create an account ?</Link>
                           </span>
-                        </label>
                       </div>
                     </div>
                   </form>
