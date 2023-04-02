@@ -4,8 +4,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/Usercontext";
 import axios from "axios";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function Signup() {
   const [userData, setUserData] = useContext(UserContext);
@@ -105,20 +103,14 @@ function Signup() {
                         onChange={handleChange}
                       />
                     </div>
-                    <div className="login-flex">
+                    <div className="mb-3">
                     <input
                           className="form-control mb-3"
-                          type={showPassword ? "text" : "password"} // toggle password visibility based on state
+                          type="password"
                           name="password"
                           onChange={handleChange}
                           placeholder="Password"
                         />
-                          <button
-                         type="button"
-                         className="password-toggle mb-3"
-                        onClick={() => setShowPassword(!showPassword)}>
-                        {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                      </button>
                     </div>
                     <div className="d-grid">
                       <button
