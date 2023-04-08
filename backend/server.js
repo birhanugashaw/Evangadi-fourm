@@ -13,12 +13,7 @@ const questionRouter = require("./server/api/questions/question.router");
 
 const userRouter = require("./server/api/users/user.router");
 
-const answerRouter=require("./server/api/answers/answer.router")
-
-
-// app.get("/", function (req, res) {
-//   res.end("Listening at port: " + port);
-// });
+const answerRouter = require("./server/api/answers/answer.router");
 
 app.use("/api/users", userRouter);
 
@@ -26,4 +21,4 @@ app.use("/api/question", questionRouter);
 
 app.use("/api/answer", answerRouter);
 
-app.listen(port, ()=>console.log(`listining at http://localhost:${port}`));
+app.listen(port || 4000, () => console.log(`listening at http://localhost:${port}`));

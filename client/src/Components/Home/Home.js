@@ -4,90 +4,105 @@ import profile from "../../Images/Default_pfp.jpg";
 import { UserContext } from "../../context/Usercontext";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+// import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+// import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 function Home() {
   const [userData, setUserData] = useContext(UserContext);
-  // console.log( userData.user?.display_name )
-  // console.log({userData.user?.display_name})
-  const [question, setQuestion] = useState();
-
+  const [questions, setQuestions] = useState([]);
   const navigate = useNavigate();
 
+  // const handleLike = async (id) => {
+  //   try {
+  //     await axios.put(`http://localhost:4000/api/question/${id}/like`);
+  //     const response = await axios.get("http://localhost:4000/api/question/");
+  //     setQuestions(response.data.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const handleDislike = async (id) => {
+  //   try {
+  //     await axios.put(`http://localhost:4000/api/question/${id}/dislike`);
+  //     const response = await axios.get("http://localhost:4000/api/question/");
+  //     setQuestions(response.data.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
-    // Axios to get all questions
-    const getData = async () => {
+    const fetchQuestions = async () => {
       try {
-        const questionRes = await axios?.get(
-          "http://localhost:4000/api/question/"
-        );
-        setQuestion(questionRes.data.data);
-        // console.log(loginRes.data.question);
-      } catch (err) {
-        console.log("problem", err);
-        // alert(err.response.data.msg);
+        const response = await axios.get("http://localhost:4000/api/question/");
+        setQuestions(response.data.data);
+        console.log(questions);
+      } catch (error) {
+        console.log(error);
       }
     };
-
-    getData();
+    fetchQuestions();
   }, []);
 
-  // console.log(question);
-
-  // use effect not to access home page when isn't login
   useEffect(() => {
-    if (!userData.user) navigate("/login");
-  }, [userData.user, navigate]);
+    if (!userData?.user) {
+      navigate("/login");
+    }
+  }, [userData?.user, navigate]);
 
   return (
-    <div>
-      <div className="col-sm-9 col-md-8 col-lg-8 mx-auto ">
-        <div className="home-header my-5">
-          <div>
-            <Link to={"/ask"}>
-              <button
-                className="btn btn-outline-success ask-question-button"
-                type="submit"
-              >
-                Ask Question
-              </button>
-            </Link>
-          </div>
-          <div className="home-welcome">
-            Welcome: {userData?.user?.display_name}
-          </div>
+    <div className="col-sm-9 col-md-8 col-lg-8 mx-auto">
+      <div className="home-header my-5">
+        <Link to="/ask">
+          <button
+            className="btn btn-outline-success ask-question-button"
+            type="submit"
+          >
+            Ask Question
+          </button>
+        </Link>
+        <div className="home-welcome">
+          {userData?.user ? `Welcome: ${userData.user.display_name}` : null}
         </div>
-        <h5 className="card-title fw-light fs-5 first-join fw-bold">
-          Questions
-        </h5>
-
-        {/* Main question list wraper  */}
-        {question?.map((singleQuestion, i) => {
-          // sending question id to answer page
-          var unique = singleQuestion.question_id.toString();
-          // console.log(unique);
-
-          return (
-            <Link to={unique} key={i}>
-              <div className="question-outer-wraper">
-                <hr />
-                <div className="question-main-wraper  row">
-                  <div className="question-inner-wrapper col-1 ">
-                    <img className="profile" src={profile} alt="pic" />
-                    <p className="name">{singleQuestion.user_name}</p>
-                  </div>
-
-                  <div className="question-inner-wrapper2 mx-5 px-5 py-4 col-7">
-                    {singleQuestion.question} ?<br />
-                    {singleQuestion.question_description}
-                  </div>
-
-                  <div className="right px-0 py-5 col-1"></div>
+      </div>
+      <h5 className="card-title fw-light fs-5 first-join fw-bold">Questions</h5>
+      {questions.map((question) => {
+        const unique = question.question_id.toString();
+        return (
+          <div className="question-outer-wraper " key={question.question_id}>
+            <Link to={unique}>
+              <div className="question-main-wraper row">
+                <div className="question-inner-wrapper col-1">
+                  <img className="profile" src={profile} alt="pic" />
+                  <p className="name">{question.user_name}</p>
                 </div>
+                <div className="question-inner-wrapper2 mx-5 px-5 py-4 col-7">
+                  {question.question}
+                </div>
+                <div className="right px-0 py-5 col-1"> </div>
               </div>
             </Link>
-          );
-        })}
-      </div>
+            {/* <div>
+              <button
+                className="btn btn-outline-success"
+                onClick={() => handleLike(question.question_id)}
+              >
+                <ThumbUpIcon />
+              </button>
+            </div>
+            <div>
+              <button
+                className="btn btn-outline-danger"
+                onClick={() => handleDislike(question.question_id)}
+              >
+                <ThumbDownIcon />
+              </button>
+            </div> */}
+            <hr />
+          </div>
+        );
+      })}
     </div>
   );
 }

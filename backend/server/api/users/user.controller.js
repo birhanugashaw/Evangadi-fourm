@@ -3,16 +3,16 @@ require("dotenv").config();
 
 const {
   register,
-  getAllUsers,
+  // getAllUsers,
   userById,
   profile,
   getUserByEmail,
 } = require("./user.service");
 const pool = require("../../config/database").pool;
 
-var validator = require("validator"); //npm
+let validator = require("validator"); //npm
 
-var jwt = require("jsonwebtoken"); //npm
+let jwt = require("jsonwebtoken"); //npm
 
 module.exports = {
   createUser: (req, res) => {
@@ -21,7 +21,7 @@ module.exports = {
     const { email, firstName, lastName, userName, password } = req.body;
     // validation process
     if (!userName || !firstName || !lastName || !email || !password)
-      // console.log("error")
+      // console.log("err")
       return res
         .status(400)
         .json({ msg: "Not all fields have been provided!" });
@@ -33,11 +33,12 @@ module.exports = {
         .json({ msg: "Password must be at least 8 characters!" });
     }
 
-    //     if ( !validator.isStrongPassword(password)) {
-    //   return res
-    //       .status(400)
-    //       .json({ msg: "Password is not strong enough ! minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1, returnScore: false, pointsPerUnique: 1, pointsPerRepeat: 0.5, pointsForContainingLower: 10, pointsForContainingUpper: 10, pointsForContainingNumber: 10, pointsForContainingSymbol: 10" });
-    // }
+    // Check if password is strong enough
+    if (!validator.isStrongPassword(password)) {
+      return res.status(400).json({
+        msg: "Password is not strong enough! Please include at least 8 characters with a mix of uppercase and lowercase letters, numbers, and symbols.",
+      });
+    }
 
     // Checking if there is existing email
     pool.query(
@@ -56,8 +57,6 @@ module.exports = {
           req.body.password = bcrypt.hashSync(password, salt);
 
           // Console after password is encrypted
-          // console.log("HELLO")
-          // console.log(req.body);
 
           register(req.body, (err, result) => {
             if (err) {
@@ -104,39 +103,19 @@ module.exports = {
     );
   },
 
-  getUsers: (req, res) => {
-    getAllUsers((err, results) => {
-      if (err) {
-        // console.log(err);
-        return res
-          .status(500)
-          .json({ msg: "Database Connection Error to get all users" });
-      }
-
-      return res.status(200).json({ data: results });
-    });
-  },
-
-  // getUserById: (req, res) => {
-  //   // console.log(req.id)
-  //   userById(req.id, (err, result) => {
+  // getUsers: (req, res) => {
+  //   getAllUsers((err, results) => {
   //     if (err) {
+  //       // console.log(err);
   //       return res
   //         .status(500)
-  //         .json({ msg: "Database Connection Error to get siiiingle user id" });
+  //         .json({ msg: "Database Connection Error to get all users" });
   //     }
-  //     if (!result) {
-  //       return res.status(404).json({
-  //         msg: "Record not found",
-  //       });
-  //     }
-  //     return res.status(200).json({ data: result });
+
+  //     return res.status(200).json({ data: results });
   //   });
   // },
-
   getUserById: (req, res) => {
-    // const id = req.params.id;
-    // console.log("id===>",id,"user===>",req.id);
     userById(req.id, (err, results) => {
       if (err) {
         console.log(err);
@@ -184,7 +163,7 @@ module.exports = {
       // console.log(token);
 
       return res.json({
-        token,
+        token,//token:token
         user: {
           id: result.user_id,
           display_name: result.user_name,

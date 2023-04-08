@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
-import './Header.css'
-import { Link } from 'react-router-dom';
-import { UserContext } from '../../context/Usercontext';
+import React, { useContext } from "react";
+import "./Header.css";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../context/Usercontext";
 
 function Header({ logout }) {
   const [userData, setUserData] = useContext(UserContext);

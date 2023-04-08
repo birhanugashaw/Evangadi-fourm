@@ -27,21 +27,6 @@ module.exports = {
     );
   },
 
-  // userById: (id, callback) => {
-  //   pool.query(
-  //     `SELECT registration.user_id,user_name,user_email,first_name,last_name FROM registration LEFT JOIN profile ON registration.user_id = profile.user_id WHERE registration.user_id = ?`,
-  //     [id],
-  //     (err, result) => {
-  //       console.log(id);
-  //       // console.log(result)
-  //       if (err) {
-  //         return callback(err);
-  //       }
-
-  //       return callback(null, result[0]);
-  //     }
-  //   );
-  // },
   userById: (id, callback) => {
     pool.query(
       `SELECT registration.user_id,user_name,user_email,first_name,last_name FROM registration LEFT JOIN profile ON registration.user_id = profile.user_id WHERE registration.user_id = ?`,
@@ -66,16 +51,16 @@ module.exports = {
     );
   },
 
-  getAllUsers: (callback) => {
-    pool.query(
-      `SELECT user_id,user_name,user_email FROM registration`,
-      [],
-      (err, result) => {
-        if (err) {
-          return callback(err);
-        }
-        return callback(null, result);
-      }
-    );
-  },
+  // getAllUsers: (callback) => {
+  //   pool.query(
+  //     `SELECT user_id,user_name,user_email FROM registration`,
+  //     [],
+  //     (err, result) => {
+  //       if (err) {
+  //         return callback(err);
+  //       }
+  //       return callback(null, result);
+  //     }
+  //   );
+  // },
 };

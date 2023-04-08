@@ -1,8 +1,29 @@
-import React from 'react'
-import footerimg from "../../Images/evangadi-logo-footer-white.png"
-import "./Footer.css"
+import React, { useEffect } from 'react';
+import footerimg from '../../Images/evangadi-logo-footer-white.png';
+import './Footer.css';
 
 function Footer() {
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const footer = document.querySelector('.footer');
+  //     const windowHeight = window.innerHeight;
+  //     const footerHeight = footer.offsetHeight;
+  //     const bodyHeight = document.body.offsetHeight;
+  
+  //     if (windowHeight + window.pageYOffset >= bodyHeight - footerHeight) {
+  //       footer.classList.add('slide-down');
+  //     } else {
+  //       footer.classList.remove('slide-down');
+  //     }
+  //   };
+  
+  //   window.addEventListener('scroll', handleScroll);
+  
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
+
   return (
     <div>
       {/* Footer section  */}
@@ -37,22 +58,22 @@ function Footer() {
           </div>
           <div className="third col-md-4">
             <ul>
-              <h5>Contact Info</h5>
-              <li>
-                <a href='/'>Evangadi Networks</a>
-              </li>
-              <li>
-                <a href='/'>support@evangadi.com</a>
-              </li>
-              <li>
-                <a href='/'>+1-202-386-2702</a>
-              </li>
+              <h5>Contact Us</h5>
+              <li>Phone: +1 (123) 456-7890</li>
+              <li>Email: info@evangadi.com</li>
             </ul>
+          </div>
+        </section>
+
+        {/* Footer bottom */}
+        <section className="row">
+          {/* Left side */}
+          <div className="col-md-6 left-side">
+            © 2023 Evangadi. All rights reserved.
           </div>
         </section>
       </footer>
     </div>
   );
 }
-
 export default Footer

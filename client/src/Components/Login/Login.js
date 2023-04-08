@@ -1,28 +1,27 @@
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/Usercontext";
 import axios from "axios";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 function Login() {
   const [userData, setUserData] = useContext(UserContext);
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
-  
+
   // To get form data
   const [form, setForm] = useState({ email: "", password: "" });
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  
+
   // Axios to login
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Logging user 
+    // Logging user
     try {
       const loginRes = await axios.post(
         "http://localhost:4000/api/users/login",
@@ -31,21 +30,21 @@ function Login() {
           password: form.password,
         }
       );
-      
+
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
-      localStorage.setItem('auth-token',loginRes.data.token)
+      localStorage.setItem("auth-token", loginRes.data.token);
       navigate("/");
     } catch (err) {
       console.log("problem", err);
       alert(err.response.data.msg);
     }
   };
-  useEffect(()=>{
-if (userData.user) navigate('/')
-  },[userData.user,navigate])
+  useEffect(() => {
+    if (userData.user) navigate("/");
+  }, [userData.user, navigate]);
   return (
     <div className="landing">
       {/* Login Section  */}
@@ -68,11 +67,11 @@ if (userData.user) navigate('/')
                   <form onSubmit={handleSubmit}>
                     <div className=" mb-3">
                       <input
-                      className="form-control"
+                        className="form-control"
                         type="email"
                         name="email"
                         onChange={handleChange}
-                        placeholder = "Email"
+                        placeholder="Email"
                       />
                     </div>
 
@@ -85,12 +84,17 @@ if (userData.user) navigate('/')
                           onChange={handleChange}
                           placeholder="Password"
                         />
-                      <button
-                         type="button"
-                         className="password-toggle"
-                        onClick={() => setShowPassword(!showPassword)}>
-                        {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                      </button>
+                        <button
+                          type="button"
+                          className="password-toggle"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? (
+                            <VisibilityIcon />
+                          ) : (
+                            <VisibilityOffIcon />
+                          )}
+                        </button>
                       </div>
                     </div>
                     <div className="d-grid">
@@ -101,9 +105,11 @@ if (userData.user) navigate('/')
                         Submit
                       </button>
                       <div className="form-check mb-3 mt-3 text-center">
-                          <span>
-                            <Link className="create-link" to={"/signup"}>Create an account ?</Link>
-                          </span>
+                        <span>
+                          <Link className="create-link" to={"/signup"}>
+                            Create an account ?
+                          </Link>
+                        </span>
                       </div>
                     </div>
                   </form>
@@ -117,7 +123,7 @@ if (userData.user) navigate('/')
                 <div className="card-body p-4 p-sm-5 all">
                   <div className="about-link">About</div>
                   <h2 className="card-title fw-light  fw-bold evangadi-title">
-                    Evangadi Networks Q&amp;A
+                    Evangadi Networks Q & A
                   </h2>
                   <h6 className="card-title  mb-4 fw-light login-description">
                     No matter what stage of life you are in, whether you’re just

@@ -11,19 +11,19 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   // To get form data
   const [form, setForm] = useState({});
-  // To track change in form fields 
+  // To track change in form fields
   const handleChange = (e) => {
-      setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
     //   console.log(form.user)
   };
 
   // Axios to signup
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
-       // sending data to the registred database
-      await axios.post("http://localhost:4000/api/users",form)
-      //once registered the login automatically to send the new user info to be logged in 
+      // sending data to the registred database
+      await axios.post("http://localhost:4000/api/users", form);
+      //once registered the login automatically to send the new user info to be logged in
       const loginRes = await axios.post(
         "http://localhost:4000/api/users/login",
         {
@@ -57,12 +57,12 @@ function Signup() {
                     Join the network
                   </h5>
 
-                    <h6 className="card-title text-center mb-3 fw-light  ">
-                      Already have an account?
-                  <Link className="create-link" to={"/login"}>
+                  <h6 className="card-title text-center mb-3 fw-light  ">
+                    Already have an account?
+                    <Link className="create-link" to={"/login"}>
                       <span className="create-link">Sign In</span>
-                  </Link>
-                    </h6>
+                    </Link>
+                  </h6>
 
                   <form onSubmit={handleSubmit}>
                     <div className="mb-3">
@@ -104,38 +104,33 @@ function Signup() {
                       />
                     </div>
                     <div className="mb-3">
-                    <input
-                          className="form-control mb-3"
-                          type="password"
-                          name="password"
-                          onChange={handleChange}
-                          placeholder="Password"
-                        />
+                      <input
+                        className="form-control mb-3"
+                        type="password"
+                        name="password"
+                        onChange={handleChange}
+                        placeholder="Password"
+                      />
                     </div>
                     <div className="d-grid">
-                      <button
-                        className="btn btn-primary btn-login login-button col-md-12"
-                      >
+                      <button className="btn btn-primary btn-login login-button col-md-12">
                         Agree and join
                       </button>
                     </div>
                     <br />
                     <div className="form-check mb-4 pb-4 text-center">
-                  
-                        I agree to the
-                        <Link to=" https://www.evangadi.com/legal/privacy/">
-                           privacy policy
-                        </Link>
-                        and
-                        <Link to="https://www.evangadi.com/legal/terms/">
-                           terms of service
-                        </Link>
-                        <br />
-                        <span className="create-link my-4">
-                          <Link to= '/login'>
-                            Already have an account?
-                          </Link>
-                        </span>
+                      I agree to the
+                      <Link to=" https://www.evangadi.com/legal/privacy/">
+                        privacy policy
+                      </Link>
+                      and
+                      <Link to="https://www.evangadi.com/legal/terms/">
+                        terms of service
+                      </Link>
+                      <br />
+                      <span className="create-link my-4">
+                        <Link to="/login">Already have an account?</Link>
+                      </span>
                     </div>
                   </form>
                 </div>
@@ -155,7 +150,7 @@ function Signup() {
                     starting elementary school or being promoted to CEO of a
                     Fortune 500 company, you have much to offer to those who are
                     trying to follow in your footsteps.
-                  </h6>   
+                  </h6>
                   <div className="d-grid">
                     <button className="how-it-work-button">
                       <a href="https://www.evangadi.com/explained/">

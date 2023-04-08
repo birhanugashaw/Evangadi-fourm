@@ -1,5 +1,5 @@
 {
-  "name": "evangadi-forum-dani",
+  "name": "evangadi-forum-birhanu",
   "version": "1.0.0",
   "description": "evangadi-forum",
   "main": "server.js",
@@ -9,7 +9,7 @@
     "client": "npm start --prefix client",
     "start": "node server.js"
   },
-  "author": "group-2",
+  "author": "group-4",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -2,11 +2,12 @@ require("dotenv").config();
 const mysql = require("mysql");
 
 const pool = mysql.createPool({
-  host:process.env.DB_HOST,
+  host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.MYSQL_DB,
-  connectionLimit:10
+  connectionLimit: 10,
+  connectTimeout: 3000,
 });
 
 pool.getConnection(function (err, connection) {
@@ -33,17 +34,23 @@ let profile = `CREATE TABLE if not exists profile(
     FOREIGN KEY (user_id) REFERENCES registration(user_id)
 )`;
 let question = `CREATE TABLE if not exists question(
-    question_id int auto_increment,
-    question varchar(255) not null,
-    question_description varchar(255),
-    question_code_block varchar(255),
-    tags varchar(255),
-    post_id varchar(255) not null,
-    user_id int not null,
-    PRIMARY KEY (question_id),
-    UNIQUE KEY (post_id),
-    FOREIGN KEY (user_id) REFERENCES registration(user_id)
+  question_id int auto_increment,
+  question varchar(255) not null,
+  question_description varchar(255),
+  question_code_block varchar(255),
+  tags varchar(255),
+  post_id varchar(255) not null,
+  user_id int not null,
+  likes int default 0,
+  dislikes int default 0,
+  PRIMARY KEY (question_id),
+  UNIQUE KEY (post_id),
+  FOREIGN KEY (user_id) REFERENCES registration(user_id)
 )`;
+let alterQuestion = `ALTER TABLE question
+  ADD COLUMN likes INT DEFAULT 0,
+  ADD COLUMN dislikes INT DEFAULT 0`;
+
 let answer = `CREATE TABLE if not exists answer(
     answer_id int auto_increment,
     answer varchar(255) not null,
@@ -76,6 +83,13 @@ pool.query(question, (err, result) => {
     console.log("Error creating question table");
   } else {
     console.log("question table created");
+    pool.query(alterQuestion, (err, result) => {
+      if (err) {
+        console.log("Error adding columns to question table");
+      } else {
+        console.log("Columns added to question table");
+      }
+    });
   }
 });
 
