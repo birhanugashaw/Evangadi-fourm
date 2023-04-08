@@ -22,10 +22,10 @@ function Signup() {
     e.preventDefault();
     try {
       // sending data to the registred database
-      await axios.post("https://sendme-api.onrender.com/api/users", form);
+      await axios.post("https://send-api.onrender.com/api/users", form);
       //once registered the login automatically to send the new user info to be logged in
       const loginRes = await axios.post(
-        "https://sendme-api.onrender.com/api/users/login",
+        "https://send-api.onrender.com/api/users/login",
         {
           email: form.email,
           password: form.password,

@@ -24,7 +24,7 @@ function Login() {
     // Logging user
     try {
       const loginRes = await axios.post(
-        "https://sendme-api.onrender.com/api/users/login",
+        "https://send-api.onrender.com/api/users/login",
         {
           email: form.email,
           password: form.password,

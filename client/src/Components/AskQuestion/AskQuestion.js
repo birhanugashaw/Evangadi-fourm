@@ -20,7 +20,7 @@ function AskQuestion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://sendme-api.onrender.com/api/question/", {
+      await axios.post("https://send-api.onrender.com/api/question/", {
         id: userData.user.id,
         question: form.title,
         questionDescription: form.description,

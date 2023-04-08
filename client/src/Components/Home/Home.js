@@ -14,8 +14,8 @@ function Home() {
 
   // const handleLike = async (id) => {
   //   try {
-  //     await axios.put(`https://sendme-api.onrender.com/api/question/${id}/like`);
-  //     const response = await axios.get("https://sendme-api.onrender.com/api/question/");
+  //     await axios.put(`https://send-api.onrender.com/api/question/${id}/like`);
+  //     const response = await axios.get("https://send-api.onrender.com/api/question/");
   //     setQuestions(response.data.data);
   //   } catch (error) {
   //     console.log(error);
@@ -24,8 +24,8 @@ function Home() {
 
   // const handleDislike = async (id) => {
   //   try {
-  //     await axios.put(`https://sendme-api.onrender.com/api/question/${id}/dislike`);
-  //     const response = await axios.get("https://sendme-api.onrender.com/api/question/");
+  //     await axios.put(`https://send-api.onrender.com/api/question/${id}/dislike`);
+  //     const response = await axios.get("https://send-api.onrender.com/api/question/");
   //     setQuestions(response.data.data);
   //   } catch (error) {
   //     console.log(error);
@@ -35,7 +35,7 @@ function Home() {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("https://sendme-api.onrender.com/api/question/");
+        const response = await axios.get("https://send-api.onrender.com/api/question/");
         setQuestions(response.data.data);
         console.log(questions);
       } catch (error) {
