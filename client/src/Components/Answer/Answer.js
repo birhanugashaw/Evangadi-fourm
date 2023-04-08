@@ -23,7 +23,7 @@ function Answer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/answer/", {
+      await axios.post("https://sendme-api.onrender.com/api/answer/", {
         answer: form.description,
         questionId: id,
         id: userData.user.id,
@@ -41,7 +41,7 @@ function Answer() {
     const getQuestion = async () => {
       try {
         const questionAsk = await axios.get(
-          `http://localhost:4000/api/question/${id}`
+          `https://sendme-api.onrender.com/api/question/${id}`
         );
         setQuestion(questionAsk.data?.data);
       } catch (err) {
@@ -54,7 +54,7 @@ function Answer() {
   useEffect(() => {
     const getAnswers = async () => {
       try {
-        const questionRes = await axios.get( `http://localhost:4000/api/answer/${id}`);
+        const questionRes = await axios.get( `https://sendme-api.onrender.com/api/answer/${id}`);
         setAnswers(questionRes.data?.data);
       } catch (err) {
         console.log("problem", err);
