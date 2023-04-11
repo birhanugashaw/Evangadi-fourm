@@ -9,7 +9,7 @@ function Header({ logout }) {
   return (
     <Navbar bg="light" expand="lg">
       <div className="header-left">
-        <Navbar.Brand href="/login" className="mr-auto">
+        <Link to="/" className="mr-auto navbar-brand">
           <img
             src="https://www.evangadi.com/themes/humans//assets/images/misc/evangadi-logo-home.png"
             alt="evangadi logo"
@@ -17,13 +17,13 @@ function Header({ logout }) {
             height="40"
             className="d-inline-block align-top"
           />
-        </Navbar.Brand>
+        </Link>
       </div>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto header-right">
-          <Nav.Link to="/">Home</Nav.Link>
-          <Nav.Link to="/">How It Works</Nav.Link>
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/how-it-works">How It Works</Nav.Link>
           <Nav.Item>
             {userData.token ? (
               <button
