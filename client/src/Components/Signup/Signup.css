@@ -1,0 +1,30 @@
+.register-section{
+    height: 550px;
+    margin-bottom: 50px;
+}
+.register_fname_lname_flex{
+    display: flex;
+  }
+  
+  .register_fname_lname_flex div{
+    width: 48%;
+  }
+  .register_fname_lname_flex .second{
+    margin-left: 4%;
+  }
+  .register_button{
+    border: none;
+    }
+    
+    .register_button:hover{
+      background-color: #fe8402;
+    }
+    .description_title{
+        font-size: 32px;
+        color: #4b456f;
+        line-height: 52px;
+        font-weight: 600;
+      }
+      .links a{
+        color: #FF4D00; 
+      }

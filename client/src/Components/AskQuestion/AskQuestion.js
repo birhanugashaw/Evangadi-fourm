@@ -20,7 +20,7 @@ function AskQuestion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://send-api.onrender.com/api/question/", {
+      await axios.post("http://localhost:4000/api/question/", {
         id: userData.user.id,
         question: form.title,
         questionDescription: form.description,
@@ -79,11 +79,11 @@ function AskQuestion() {
                 onChange={handleChange}
               />
             </div>
-            <div className="d-grid">
-              <button className="btn btn-primary btn-login post-question-button col-sm-2 col-md-4 my-3">
+            
+              <button className="btn btn-primary  post-question-button my-3">
                 Post your question
               </button>
-            </div>
+          
           </form>
         </div>
       </section>

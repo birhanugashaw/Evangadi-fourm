@@ -1,53 +1,68 @@
-.landing{
+.landingPage{
     background-image: url("../../Images/bg-svg-f.svg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 550px;
     margin-top: 0;
 }
-
-.submit-button{
-    background-color: #FF4D00;
-    color: #fff;
-    border: none;
-    text-align: center;
-    margin: 0 auto;
-    width: 150px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    padding: 12px;
-}
-
-.create-link{
-    color: #FF4D00; 
-    border: none;
-    background-color: none;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-}
-
-.signinLink{
-    color: #FF4D00;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-}
-
-.about-link{
-    color: #FF4D00;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-}
-
-/* .hide{
-    display: none;
-} */
-.login-section .all{
+.login-section {
     height: 450px;
+    margin-bottom: 30px;
 }
+.submit_button{
+  color: #fff;
+  border: none;
+  width: 150px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  padding: 12px;
+}
+.submit_button:hover{
+  background-color: #fe8402;
+}
+.navigateLink{
+  color: #FF4D00; 
+  border: none;
+  background-color: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+.about_link{
+  color: #FF4D00;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+}
+.how_it_work_btn{
+  background-color: #fe8402;
+  border: 1px solid #fe8402;
+  width: 162px;
+  height: 41px;
+  border-radius: 8px;
+  }
+  
+  .how_it_work_btn a{
+    text-decoration: none;
+    color: white;
+  }
+  .login_description{
+    color: #868686;
+    font-size: 15px;
+    line-height: 28px;
+    margin-top: 20px;
+  }
+  .description_title{
+    font-size: 32px;
+    color: #4b456f;
+    line-height: 52px;
+    font-weight: 600;
+  }
+  .login-registration-box{
+    z-index: 1000;
+    background-color: white;
+  }
+  
 /* Style for the visibility off icon */
 .password-toggle {
     position: absolute;
@@ -81,8 +96,4 @@
     fill: #a6a6a6;
   }
   
-  /* .password-toggle:hover svg path,
-  input[type="password"]:focus + .password-toggle svg path {
-    fill: #0d6efd;
-  }
-   */
+  

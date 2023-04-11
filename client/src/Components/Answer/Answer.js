@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../context/Usercontext";
 import "./Answer.css";
 
-import profile from "../../Images/Default_pfp.jpg";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function Answer() {
   const [userData, setUserData] = useContext(UserContext);
@@ -23,7 +23,7 @@ function Answer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://send-api.onrender.com/api/answer/", {
+      await axios.post("http://localhost:4000/api/answer/", {
         answer: form.description,
         questionId: id,
         id: userData.user.id,
@@ -41,7 +41,7 @@ function Answer() {
     const getQuestion = async () => {
       try {
         const questionAsk = await axios.get(
-          `https://send-api.onrender.com/api/question/${id}`
+          `http://localhost:4000/api/question/${id}`
         );
         setQuestion(questionAsk.data?.data);
       } catch (err) {
@@ -54,7 +54,7 @@ function Answer() {
   useEffect(() => {
     const getAnswers = async () => {
       try {
-        const questionRes = await axios.get( `https://send-api.onrender.com/api/answer/${id}`);
+        const questionRes = await axios.get( `http://localhost:4000/api/answer/${id}`);
         setAnswers(questionRes.data?.data);
       } catch (err) {
         console.log("problem", err);
@@ -71,8 +71,8 @@ function Answer() {
   }, [userData.user]);
 
   return (
-      <div className="col-sm-9 col-md-8 col-lg-8 mx-auto mt-5">
-        <div className="card-title fw-light fs-5 first-join fw-bold">
+      <div className=" col-sm-8 mx-auto mt-5">
+        <div className=" fw-light fs-5 fw-bold px-2">
           <h3>Question</h3>
           <br />
           <p>{question?.question}</p>
@@ -81,23 +81,22 @@ function Answer() {
 
         <div>
           {answers.length > 0 ? (
-            <div className="question-outer-wraper">
+            <div className="question-outer-wraper px-2">
               <hr />
               <h4>Answer From The Community</h4>
             </div>
           ) : null}
 
-          <div className="question-outer-wraper">
+          <div className="question-outer-wraper px-2">
             {answers.map((singleAnswer, i) => {
               return (
                 <div className="answer-main-wraper row" key={i}>
                   <div className="question-inner-wrapper col-1">
-                    <img className="profile" src={profile} alt="pic" />
+                  <AccountCircleIcon fontSize="large"/>
                     <p className="name">{singleAnswer?.user_name}</p>
                   </div>
                   <div
                     className="question-inner-wrapper2 mx-5 px-5 col-9"
-                    style={{ height: "auto" }}
                   >
                     {singleAnswer.answer}
                   </div>
@@ -114,21 +113,21 @@ function Answer() {
                   <div className="form-group">
                     <textarea
                       className="form-control"
-                      id="exampleFormControlTextarea1 question"
+                     
                       rows={3}
                       name="description"
                       placeholder="Your Answer..."
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="d-grid">
+                  
                     <button
-                      className="btn btn-primary btn-login post-answer-button col-sm-4 col-md-4 my-3"
+                      className="btn btn-primary post-answer-button col-sm-4 col-md-4 my-3"
                       type="submit"
                     >
                       Post your Answer
                     </button>
-                  </div>
+                  
                 </form>
               </div>
             </section>

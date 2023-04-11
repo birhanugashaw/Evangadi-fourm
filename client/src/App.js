@@ -57,42 +57,12 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/login" element={ <> <Header /> <Login /> </> }/>
+          <Route path="/login" element={ <> <Header /> <Login /> </> }/> 
           <Route path="/signup" element={<><Header /> <Signup /> </>} />
           <Route path="/" element={ <><Header logout={logout} /> <Home /></>}/>
-
-
-  
-          <Route
-            path="/ask"
-            element={
-              <>
-                {" "}
-                <Header logout={logout} /> <AskQuestion />{" "}
-              </>
-            }
-          />
-          <Route
-            path="/answer"
-            element={
-              <>
-                {" "}
-                <Header logout={logout} /> <Answer />{" "}
-              </>
-            }
-          />
-          <Route
-            path="/:id"
-            element={
-              <>
-                {" "}
-                <Header logout={logout} /> <Answer />
-              </>
-            }
-          />
-              
-             
-        </Routes>
+          <Route  path="/ask" element={ <><Header logout={logout} /> <AskQuestion /> </> }/>
+          <Route path="/:id" element={<><Header logout={logout} /> <Answer /></> } />
+          </Routes>
        <Footer />
       </Router>
     </div>
@@ -100,3 +70,21 @@ function App() {
 }
 
 export default App;
+
+        
+           
+          
+              
+             
+      
+            
+              
+       
+           
+           
+            
+               
+             
+              
+             
+    

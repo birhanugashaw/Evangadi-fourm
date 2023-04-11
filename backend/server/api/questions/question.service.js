@@ -3,7 +3,8 @@ const pool = require("../../config/database").pool;
 module.exports = {
   addQuestion: (data, callback) => {
     pool.query(
-      `INSERT INTO question(question, question_description, question_code_block, tags, post_id, user_id, likes, dislikes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO question(question, question_description, question_code_block, tags, post_id, user_id) VALUES (?, ?, ?, ?, ?, ?)
+      `,
       [
         data.question,
         data.questionDescription,
@@ -11,8 +12,6 @@ module.exports = {
         data.tags,
         data.postId,
         data.id,
-        data.likes || 0,
-        data.dislikes || 0,
       ],
       (err, result) => {
         if (err) {
@@ -44,30 +43,6 @@ module.exports = {
           return callback(err);
         }
         return callback(null, result[0]);
-      }
-    );
-  },
-  likeQuestion: (id, callback) => {
-    pool.query(
-      `UPDATE question SET likes = likes + 1 WHERE question_id = ?`,
-      [id],
-      (err, result) => {
-        if (err) {
-          return callback(err);
-        }
-        return callback(null, result);
-      }
-    );
-  },
-  dislikeQuestion: (id, callback) => {
-    pool.query(
-      `UPDATE question SET dislikes = dislikes + 1 WHERE question_id = ?`,
-      [id],
-      (err, result) => {
-        if (err) {
-          return callback(err);
-        }
-        return callback(null, result);
       }
     );
   },

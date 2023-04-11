@@ -1,7 +1,41 @@
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
-  
- 
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+}
+.signin_btn {
+  background-color: #516cf0;
+  border: none;
+  color: white;
+  width: 200px;
+  font-size: 15px;
+  font-weight: bolder;
+  margin-left: 15%;
+}
+.signin_btn:hover {
+  background-color: #fe8402;
+}
+.navbar-brand img {
+  margin-right: 10px;
+  margin-left: 70px;
+}
+
+.nav-link {
+  color: #333;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.signin_btn {
+  margin-left: 20px;
+}
+.header-left {
+  margin-right: auto;
+}
+
+.header-right {
+  margin-left: auto;
+  margin-right: 70px;
+}

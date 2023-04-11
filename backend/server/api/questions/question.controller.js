@@ -2,8 +2,8 @@ const {
   questionById,
   getAllQuestions,
   addQuestion,
-  likeQuestion,
-  dislikeQuestion,
+  // likeQuestion,
+  // dislikeQuestion,
 } = require("./question.service");
 
 module.exports = {

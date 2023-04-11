@@ -1,29 +1,11 @@
 import React, { useEffect } from 'react';
 import footerimg from '../../Images/evangadi-logo-footer-white.png';
 import './Footer.css';
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 function Footer() {
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const footer = document.querySelector('.footer');
-  //     const windowHeight = window.innerHeight;
-  //     const footerHeight = footer.offsetHeight;
-  //     const bodyHeight = document.body.offsetHeight;
-  
-  //     if (windowHeight + window.pageYOffset >= bodyHeight - footerHeight) {
-  //       footer.classList.add('slide-down');
-  //     } else {
-  //       footer.classList.remove('slide-down');
-  //     }
-  //   };
-  
-  //   window.addEventListener('scroll', handleScroll);
-  
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
-
   return (
     <div>
       {/* Footer section  */}
@@ -34,11 +16,10 @@ function Footer() {
               <a className="navbar-brand mx-5 px-2" href="/">
                 <img src={footerimg} alt="" />
               </a>
-              <div className="facebook"></div>
               <div className="logos mb-4">
-                <i className="fab fa-facebook-f"></i>
-                <i className="fa-brands fa-instagram"></i>
-                <i className="fa-brands fa-youtube"></i>
+                 <FacebookRoundedIcon />
+                <InstagramIcon />
+                <YouTubeIcon />
               </div>
             </div>
           </div>

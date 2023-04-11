@@ -7,7 +7,6 @@ const pool = mysql.createPool({
   password: process.env.DB_PASS,
   database: process.env.MYSQL_DB,
   connectionLimit: 10,
-  connectTimeout: 3000,
 });
 
 pool.getConnection(function (err, connection) {
@@ -41,15 +40,10 @@ let question = `CREATE TABLE if not exists question(
   tags varchar(255),
   post_id varchar(255) not null,
   user_id int not null,
-  likes int default 0,
-  dislikes int default 0,
   PRIMARY KEY (question_id),
   UNIQUE KEY (post_id),
   FOREIGN KEY (user_id) REFERENCES registration(user_id)
 )`;
-let alterQuestion = `ALTER TABLE question
-  ADD COLUMN likes INT DEFAULT 0,
-  ADD COLUMN dislikes INT DEFAULT 0`;
 
 let answer = `CREATE TABLE if not exists answer(
     answer_id int auto_increment,
@@ -83,13 +77,6 @@ pool.query(question, (err, result) => {
     console.log("Error creating question table");
   } else {
     console.log("question table created");
-    pool.query(alterQuestion, (err, result) => {
-      if (err) {
-        console.log("Error adding columns to question table");
-      } else {
-        console.log("Columns added to question table");
-      }
-    });
   }
 });
 

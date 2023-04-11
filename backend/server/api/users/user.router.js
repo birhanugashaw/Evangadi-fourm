@@ -4,7 +4,7 @@ const auth = require("../../middleware/auth");
 
 const {
   createUser,
-  getUsers,
+  // getUsers,
   getUserById,
   login,
 } = require("./user.controller");

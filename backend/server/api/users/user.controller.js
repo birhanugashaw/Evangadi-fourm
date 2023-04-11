@@ -78,7 +78,7 @@ module.exports = {
                     .json({ msg: "Database Connection Error toget user id" });
                 }
 
-                req.body.userId = result[0].user_id; //from database
+                 req.body.userId = result[0].user_id; //from database
 
                 //  Console after geting encrypted password and user id
                 console.log(req.body);

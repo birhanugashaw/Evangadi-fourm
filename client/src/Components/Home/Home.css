@@ -1,3 +1,6 @@
+.home{
+  margin-bottom: 278px;
+}
 .home-header {
     display: flex;
     width: 100%;
@@ -14,48 +17,28 @@
   }
   
   .ask-question-button:hover {
-    background-color: #516cf0;
+    background-color: #fe8402;
   }
   
   .home-welcome {
     font-weight: bold;
     font-size: 18px;
   }
-  
-  .profile {
-    width: 100px;
-    margin-right: 1rem;
-  }
-  
-  .question-main-wraper {
-    display: flex;
-    font-weight: 500;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  .question-inner-wrapper {
+  .account-Icon {
     width: 120px;
     text-align: center;
   }
-  
-  .question-inner-wrapper2 {
-    padding-top: 4%;
-    padding-left: 4%;
-    display: flex;
-
-  }
-  
-  .right:after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: bolder;
-    content: "\f054";
-    margin-left: 100%;
-  }
-  
+ 
   .question-outer-wraper a{
-    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
   }
   
+  
+
+
+
+
+
+
+
+ 
