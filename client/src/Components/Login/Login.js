@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/Usercontext";
-import axios from "axios";
+import axios from "../../axios";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 

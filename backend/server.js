@@ -18,14 +18,6 @@ app.use("/api/users", userRouter);
 app.use("/api/question", questionRouter);
 app.use("/api/answer", answerRouter);
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, "client/build")));
-
-// Catch all routes and redirect to React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-
 app.listen(process.env.PORT || 4000, () =>
   console.log(`listening at http://localhost:${process.env.PORT || 4000}`)
 );

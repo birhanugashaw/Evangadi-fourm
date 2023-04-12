@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Home.css";
 import { UserContext } from "../../context/Usercontext";
-import axios from "axios";
+import axios from "../../axios";
 import { Link, useNavigate } from "react-router-dom";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("/api/question/");
+        const response = await axios.get(`/api/question/`);
         setQuestions(response.data.data);
         console.log(questions);
       } catch (error) {

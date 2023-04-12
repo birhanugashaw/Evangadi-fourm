@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import axios from "../../axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../context/Usercontext";
 import "./Answer.css";
