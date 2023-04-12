@@ -15,6 +15,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
+import NotFound from "./Components/NotFound";
 
 function App() {
   const [userData, setUserData] = useContext(UserContext);
@@ -62,6 +63,8 @@ function App() {
           <Route path="/" element={ <><Header logout={logout} /> <Home /></>}/>
           <Route  path="/ask" element={ <><Header logout={logout} /> <AskQuestion /> </> }/>
           <Route path="/:id" element={<><Header logout={logout} /> <Answer /></> } />
+          <Route path="*" element={<><Header logout={logout} /> <NotFound /> </>} />
+
           </Routes>
        <Footer />
       </Router>
