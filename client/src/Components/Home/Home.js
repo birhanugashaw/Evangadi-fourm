@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/question/");
+        const response = await axios.get("/api/question/");
         setQuestions(response.data.data);
         console.log(questions);
       } catch (error) {

@@ -20,7 +20,7 @@ function AskQuestion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/question/", {
+      await axios.post("/api/question/", {
         id: userData.user.id,
         question: form.title,
         questionDescription: form.description,

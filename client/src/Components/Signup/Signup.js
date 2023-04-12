@@ -24,10 +24,10 @@ function Signup() {
     e.preventDefault();
     try {
       // sending data to the registred database
-      await axios.post("http://localhost:4000/api/users", form);
+      await axios.post("/api/users", form);
       //once registered the login automatically to send the new user info to be logged in
       const loginRes = await axios.post(
-        "http://localhost:4000/api/users/login",
+        "/api/users/login",
         {
           email: form.email,
           password: form.password,
