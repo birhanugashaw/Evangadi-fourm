@@ -12,6 +12,7 @@ function Answer() {
   const [answers, setAnswers] = useState([]);
   const [form, setForm] = useState({});
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [error, setError] = useState(null)
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -23,18 +24,19 @@ function Answer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/answer/", {
+        await axios.post("/api/answer/", {
         answer: form.description,
         questionId: id,
         id: userData.user.id,
-        answerCodeBlock: "first",
+        answerCodeBlock: "answercode",
       });
       setIsFormSubmitted(true);
       e.target.reset();
     } catch (err) {
       console.log("problem", err);
-      alert(err.response?.data?.msg);
+      setError (err.response?.data?.msg)
     }
+    
   };
 
   useEffect(() => {
@@ -62,13 +64,13 @@ function Answer() {
     };
     getAnswers();
   }, [id, isFormSubmitted]);
-        console.log(answers);
+        //  console.log(answers);
 
   useEffect(() => {
     if (!userData.user) {
       navigate("/login");
     }
-  }, [userData.user]);
+  }, [userData.user,navigate]);
 
   return (
       <div className=" col-sm-8 mx-auto mt-5">
@@ -108,6 +110,11 @@ function Answer() {
             <section className="container row col-12 mb-5">
               <div>
                 <h5 className="title">Answer the above question</h5>
+                {error && (
+              <div className="alert alert-danger text-center" role="alert">
+                {error}
+              </div>
+            )}
                 <form onSubmit={handleSubmit}>
                   <br />
                   <div className="form-group">

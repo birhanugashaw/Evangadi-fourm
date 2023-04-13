@@ -16,9 +16,9 @@ function Home() {
       try {
         const response = await axios.get(`/api/question/`);
         setQuestions(response.data.data);
-        console.log(questions);
+         console.log(questions);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     fetchQuestions();
@@ -38,7 +38,7 @@ function Home() {
             Ask Question
           </button>
         </Link>
-        <div className="home-welcome">
+        <div className="home-welcome d-none d-md-block">
           {userData?.user ? `Welcome: ${userData.user.display_name}` : null}
         </div>
       </div>

@@ -1,6 +1,10 @@
 .register-section{
-    height: 550px;
-    margin-bottom: 50px;
+    height: 700px;
+}
+.registration-box{
+  z-index: 1000;
+  background-color: white;
+  height: 600px;
 }
 .register_fname_lname_flex{
     display: flex;

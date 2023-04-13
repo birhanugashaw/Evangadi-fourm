@@ -1,6 +1,7 @@
 .discription{
 	width: 480px;
 	margin-top: 40px;
+	
 }
 
 .discription h5{
@@ -13,14 +14,14 @@
 }
 
 .ask{
-	height: 375px;
+	height: 450px;
 	text-align: center;
 	border-radius: 15px;
 	box-shadow: 0 0 5px #989292;
 	background-color: white;
 	padding-top: 30px;
-	margin: 10px auto;
-	max-width: 600px;
+	margin: 10px auto 100px !important;
+	max-width: 800px;
 }
 
 .ask h5{
@@ -48,9 +49,9 @@
 	resize: none;
 }
 
-.ask form .d-grid{
+/* .ask form .d-grid{
 	width: 100%;
-}
+} */
 
 .post-question-button{
 	width: 100%;

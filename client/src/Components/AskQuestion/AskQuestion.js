@@ -6,6 +6,7 @@ import "./AskQuestion.css";
 
 function AskQuestion() {
   const [userData, setUserData] = useContext(UserContext);
+  const [error,setError] = useState(null)
   const navigate = useNavigate();
 
   const [form, setForm] = useState({});
@@ -24,13 +25,13 @@ function AskQuestion() {
         id: userData.user.id,
         question: form.title,
         questionDescription: form.description,
-        questionCodeBlock: "hello",
-        tags: "hello",
+        questionCodeBlock: "code",
+        tags: "tags",
       });
       navigate("/");
     } catch (err) {
       console.log("problem", err);
-      alert(err.response.data.msg);
+      setError(err.response.data.msg)
     }
   };
 
@@ -59,6 +60,11 @@ function AskQuestion() {
         <div className>
           <h5 className="title">Ask a public question</h5>
           <Link to="/">Go to question page</Link>
+          {error && (
+              <div className="alert alert-danger text-center" role="alert">
+                {error}
+              </div>
+            )}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <textarea

@@ -6,8 +6,7 @@
     margin-top: 0;
 }
 .login-section {
-    height: 450px;
-    margin-bottom: 30px;
+    height: 500px;
 }
 .submit_button{
   color: #fff;
@@ -58,7 +57,7 @@
     line-height: 52px;
     font-weight: 600;
   }
-  .login-registration-box{
+  .login-box{
     z-index: 1000;
     background-color: white;
   }

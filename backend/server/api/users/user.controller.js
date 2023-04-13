@@ -36,7 +36,7 @@ module.exports = {
     // Check if password is strong enough
     if (!validator.isStrongPassword(password)) {
       return res.status(400).json({
-        msg: "Password is not strong enough! Please include at least 8 characters with a mix of uppercase and lowercase letters, numbers, and symbols.",
+        msg: "Password is not strong enough!.",
       });
     }
 

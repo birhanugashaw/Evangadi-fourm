@@ -8,6 +8,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 function Login() {
   const [userData, setUserData] = useContext(UserContext);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -23,23 +24,20 @@ function Login() {
     e.preventDefault();
     // Logging user
     try {
-      const loginRes = await axios.post(
-        "/api/users/login",
-        {
-          email: form.email,
-          password: form.password,
-        }
-      );
-
-      setUserData({
-        token: loginRes.data.token,
-        user: loginRes.data.user,
+      const response = await axios.post("/api/users/login", {
+        email: form.email,
+        password: form.password,
       });
-      localStorage.setItem("auth-token", loginRes.data.token);
+      console.log(response);
+      setUserData({
+        token: response.data.token,
+        user: response.data.user,
+      });
+      localStorage.setItem("auth-token", response.data.token);
       navigate("/");
     } catch (err) {
       console.log("problem", err);
-      alert(err.response.data.msg);
+      setError(err.response.data.msg);
     }
   };
   useEffect(() => {
@@ -50,7 +48,12 @@ function Login() {
       <section className="login-section container ">
         <div className="row">
           {/* login section  */}
-          <div className=" col-md-5 login-registration-box border-0 shadow rounded-3 my-4 p-4 ">
+          <div className=" col-md-5 login-box border-0 shadow rounded-3 my-4 p-4 ">
+            {error && (
+              <div className="alert alert-danger text-center" role="alert">
+                {error}
+              </div>
+            )}
             <h5 className="text-center fw-light fs-5  fw-bold mb-4 mt-5">
               Login to your account
             </h5>
