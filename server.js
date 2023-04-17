@@ -19,11 +19,11 @@ app.use("/api/question", questionRouter);
 app.use("/api/answer", answerRouter);
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 // Catch-all route for non-API routes
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
 app.listen(process.env.PORT || 4000, () =>
