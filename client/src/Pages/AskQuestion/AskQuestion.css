@@ -1,7 +1,5 @@
 .discription{
-	width: 480px;
-	margin-top: 40px;
-	
+	width: 550px;
 }
 
 .discription h5{
@@ -14,14 +12,11 @@
 }
 
 .ask{
-	height: 450px;
 	text-align: center;
-	border-radius: 15px;
-	box-shadow: 0 0 5px #989292;
 	background-color: white;
 	padding-top: 30px;
-	margin: 10px auto 100px !important;
-	max-width: 800px;
+	margin: 0 auto 30px;
+	max-width: 900px;
 }
 
 .ask h5{
@@ -36,7 +31,6 @@
 
 .ask form .form-group{
 	width: 100%;
-	margin-bottom: 15px;
 }
 
 .ask form .form-control{
@@ -46,15 +40,8 @@
 	box-shadow: 0 0 5px #989292;
 	padding: 10px;
 	font-size: 16px;
-	resize: none;
 }
-
-/* .ask form .d-grid{
-	width: 100%;
-} */
-
 .post-question-button{
-	width: 100%;
 	font-size: 16px;
 	padding: 10px;
 	background-color: #516cf0;
@@ -67,4 +54,9 @@
 .post-question-button:hover{
 	background-color: #3448a2;
 	cursor: pointer;
+}
+.error{
+	width: 300px;
+	padding: 5px;
+	margin: 2px auto;
 }

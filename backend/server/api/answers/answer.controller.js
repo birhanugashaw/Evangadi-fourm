@@ -8,7 +8,7 @@ module.exports = {
     if (!answer || !id || !questionId) {
       return res
         .status(400)
-        .json({ msg: "Not all fields have been provided!" });
+        .json({ msg: "please fill the the answer field!" });
     }
 
     //sending data to answer table

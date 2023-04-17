@@ -17,8 +17,9 @@ function Home() {
         const response = await axios.get(`/api/question/`);
         setQuestions(response.data.data);
          console.log(questions);
+        console.log(response)
       } catch (error) {
-        // console.log(error);
+        console.log(error);
       }
     };
     fetchQuestions();
@@ -43,13 +44,12 @@ function Home() {
         </div>
       </div>
       <h5 className=" fs-5 fw-bold">
-        {questions.length > 0 ? `Questions` : null}{" "}
+        {questions.length > 0 ? `Questions` : null}
       </h5>
       {questions.map((question) => {
-        const idUrl = question.question_id.toString();
         return (
-          <div className="question-outer-wraper " key={question.question_id}>
-            <Link to={idUrl}>
+          <div className="question-outer-wraper " key={question.post_id}>
+            <Link to={question.post_id}>
               <div className="question-main-wraper row">
                 <div className="mx-3 col-1">
                   <AccountCircleIcon fontSize="large" />

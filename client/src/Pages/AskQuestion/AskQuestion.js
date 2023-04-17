@@ -6,10 +6,9 @@ import "./AskQuestion.css";
 
 function AskQuestion() {
   const [userData, setUserData] = useContext(UserContext);
+  const [form, setForm] = useState({});
   const [error,setError] = useState(null)
   const navigate = useNavigate();
-
-  const [form, setForm] = useState({});
 
   const handleChange = (e) => {
     setForm((prevState) => ({
@@ -18,15 +17,13 @@ function AskQuestion() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {  
     e.preventDefault();
     try {
       await axios.post("/api/question/", {
         id: userData.user.id,
         question: form.title,
         questionDescription: form.description,
-        questionCodeBlock: "code",
-        tags: "tags",
       });
       navigate("/");
     } catch (err) {
@@ -43,7 +40,7 @@ function AskQuestion() {
     <div>
       <section className="discription container-fluid">
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 mt-3">
             <h5>Steps to write good question</h5>
             <ul>
               <li>Summarize your problem in a one-line title.</li>
@@ -56,15 +53,16 @@ function AskQuestion() {
           </div>
         </div>
       </section>
-      <section className="ask container row col-8 mb-5">
-        <div className>
-          <h5 className="title">Ask a public question</h5>
+      <section className="ask container row col-8 mb-2">
+         <h5 className="title">Ask a public question</h5>
           <Link to="/">Go to question page</Link>
-          {error && (
-              <div className="alert alert-danger text-center" role="alert">
+           <div className="error">
+            {error && (
+              <div className=" alert alert-danger text-center" role="alert">
                 {error}
               </div>
             )}
+            </div>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <textarea
@@ -89,9 +87,7 @@ function AskQuestion() {
               <button className="btn btn-primary  post-question-button my-3">
                 Post your question
               </button>
-          
           </form>
-        </div>
       </section>
     </div>
   );

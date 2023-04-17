@@ -50,7 +50,7 @@ function Login() {
           {/* login section  */}
           <div className=" col-md-5 login-box border-0 shadow rounded-3 my-4 p-4 ">
             {error && (
-              <div className="alert alert-danger text-center" role="alert">
+              <div className="alert alert-danger text-center " role="alert">
                 {error}
               </div>
             )}

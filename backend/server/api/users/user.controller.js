@@ -27,18 +27,18 @@ module.exports = {
         .json({ msg: "Not all fields have been provided!" });
 
     // console.log(validator.isStrongPassword(password));
-    if (password <= 8) {
+    if (password.length <= 8) {
       return res
         .status(400)
         .json({ msg: "Password must be at least 8 characters!" });
     }
 
     // Check if password is strong enough
-    if (!validator.isStrongPassword(password)) {
-      return res.status(400).json({
-        msg: "Password is not strong enough!.",
-      });
-    }
+    // if (!validator.isStrongPassword(password)) {
+    //   return res.status(400).json({
+    //     msg: "Password is not strong enough!.",
+    //   });
+    // }
 
     // Checking if there is existing email
     pool.query(

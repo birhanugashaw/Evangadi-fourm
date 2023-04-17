@@ -5,17 +5,16 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
-import Header from "./Components/Header/Header";
-import AskQuestion from "./Components/AskQuestion/AskQuestion";
-import Footer from "./Components/Footer/Footer";
-import Home from "./Components/Home/Home";
-import Answer from "./Components/Answer/Answer";
+import Header from "./Pages/Header/Header";
+import AskQuestion from "./Pages/AskQuestion/AskQuestion";
+import Footer from "./Pages/Footer/Footer";
+import Home from "./Pages/Home/Home";
+import Answer from "./Pages/Answer/Answer";
 import { UserContext } from "./context/Usercontext";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import Login from "./Components/Login/Login";
-import Signup from "./Components/Signup/Signup";
-import NotFound from "./Components/NotFound";
+import Login from "./Pages/Login/Login";
+import Signup from "./Pages/Signup/Signup";
 
 function App() {
   const [userData, setUserData] = useContext(UserContext);
@@ -57,14 +56,13 @@ function App() {
   return (
     <div className="App">
       <Router>
+      <Header logout={logout} />
         <Routes>
-          <Route path="/login" element={ <> <Header /> <Login /> </> }/> 
-          <Route path="/signup" element={<><Header /> <Signup /> </>} />
-          <Route path="/" element={ <><Header logout={logout} /> <Home /></>}/>
-          <Route  path="/ask" element={ <><Header logout={logout} /> <AskQuestion /> </> }/>
-          <Route path="/:id" element={<><Header logout={logout} /> <Answer /></> } />
-          <Route path="*" element={<><Header logout={logout} /> <NotFound /> </>} />
-
+          <Route path="/login" element={ <Login /> }/> 
+          <Route path="/signup" element={ <Signup /> } />
+          <Route path="/" element={ <Home />}/>
+          <Route  path="/ask" element={ <AskQuestion />  }/>
+          <Route path="/:id" element={ <Answer />} />
           </Routes>
        <Footer />
       </Router>
