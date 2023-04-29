@@ -16,8 +16,7 @@ function Home() {
       try {
         const response = await axios.get(`/api/question/`);
         setQuestions(response.data.data);
-         console.log(questions);
-        console.log(response)
+        //  console.log(questions);
       } catch (error) {
         console.log(error);
       }

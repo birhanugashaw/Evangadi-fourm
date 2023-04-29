@@ -63,7 +63,7 @@ function App() {
           <Route path="/" element={ <Home />}/>
           <Route  path="/ask" element={ <AskQuestion />  }/>
           <Route path="/:id" element={ <Answer />} />
-          </Routes>
+        </Routes>
        <Footer />
       </Router>
     </div>

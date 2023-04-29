@@ -34,7 +34,9 @@ function AskQuestion() {
 
   useEffect(() => {
     if (!userData.user) navigate("/login");
-  }, [userData.user]);
+     navigate("/ask");
+   
+  }, [userData.user, navigate]);
 
   return (
     <div>

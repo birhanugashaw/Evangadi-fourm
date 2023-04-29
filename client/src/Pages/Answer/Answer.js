@@ -57,7 +57,7 @@ function Answer() {
           `/api/answer/${question?.question_id}`
         );
         setAnswers(questionRes.data?.data);
-      } catch (err) {
+      } catch (err) { 
         console.log("problem", err);
       }
     };
@@ -65,9 +65,7 @@ function Answer() {
   }, [question?.question_id, answers]);
 
   useEffect(() => {
-    if (!userData.user) {
-      navigate("/login");
-    }
+    if (!userData.user) navigate("/login");
   }, [userData.user, navigate]);
 
   return (

@@ -14,21 +14,21 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   // To get form data
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({});
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Axios to login
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     // Logging user
     try {
       const response = await axios.post("/api/users/login", {
         email: form.email,
         password: form.password,
       });
-      console.log(response);
+      //  console.log(response);
       setUserData({
         token: response.data.token,
         user: response.data.user,
@@ -95,7 +95,7 @@ function Login() {
                   className="btn btn-primary submit_button "
                   type="submit"
                 >
-                  Submit
+                 Submit
                 </button>
                 <div className="form-check mb-3 mt-3 text-center">
                   <span>
